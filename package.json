@@ -1,0 +1,42 @@
+{
+  "name": "hichchi-nestjs-crud",
+  "version": "0.0.1",
+  "description": "Simple nestjs CRUD module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "build:dev": "rimraf dist && tsc --outDir ./dist",
+    "prepublish": "npm run build",
+    "release": "npm run build && changeset publish",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hichchidev/hichchi-nestjs-crud.git"
+  },
+  "keywords": [],
+  "author": "Waruna Udayanga",
+  "license": "MIT",
+  "dependencies": {
+    "@nestjs/common": "^10.1.0",
+    "@nestjs/typeorm": "^10.0.0",
+    "hichchi-nestjs-common": "^0.0.3",
+    "hichchi-utils": "^1.0.5",
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.17"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@types/node": "^20.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
+  }
+}
