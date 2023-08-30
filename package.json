@@ -22,7 +22,7 @@
   "dependencies": {
     "@nestjs/common": "^10.1.0",
     "@nestjs/typeorm": "^10.0.0",
-    "hichchi-nestjs-common": "^0.0.3",
+    "hichchi-nestjs-common": "^0.0.4",
     "hichchi-utils": "^1.0.5",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.17"
