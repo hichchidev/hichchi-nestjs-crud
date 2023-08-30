@@ -1,5 +1,5 @@
-import { toSentenceCase } from "../../../hichchi-utils";
 import { IStatusResponse } from "hichchi-nestjs-common/interfaces";
+import { toSentenceCase } from "hichchi-utils";
 
 const EntityResponses = {
     CREATED: (entityName: string): IStatusResponse => {

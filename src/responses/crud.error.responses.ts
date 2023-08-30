@@ -1,4 +1,4 @@
-import { toLowerCaseBreak, toSentenceCase, toSnakeCase, toUpperCaseBreak } from "../../../hichchi-utils";
+import { toLowerCaseBreak, toSentenceCase, toSnakeCase, toUpperCaseBreak } from "hichchi-utils";
 import { ICrudErrorResponses } from "../interfaces/crud-error-responses.interface";
 import { IEntityErrorResponse } from "hichchi-nestjs-common/interfaces";
 
