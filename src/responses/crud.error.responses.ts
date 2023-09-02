@@ -8,6 +8,11 @@ const EntityErrors: ICrudErrorResponses = {
         code: `${toUpperCaseBreak(entityName)}_400_NO_DEFAULT_${toSnakeCase(field, true)}`,
         message: `No default value for ${toLowerCaseBreak(entityName)} ${toLowerCaseBreak(field)}!`,
     }),
+    E_400_ID: (entityName: string): IEntityErrorResponse => ({
+        status: 404,
+        code: `${toUpperCaseBreak(entityName)}_400_ID`,
+        message: `Invalid ${toLowerCaseBreak(entityName)} id!, Id must be a UUID!`,
+    }),
     E_404_ID: (entityName: string): IEntityErrorResponse => ({
         status: 404,
         code: `${toUpperCaseBreak(entityName)}_404_ID`,

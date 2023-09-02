@@ -1,10 +1,16 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { NotFoundException } from "@nestjs/common";
-// import { ConnectionOptions } from "./dtos";
 import { BaseRepository } from "./base-repository";
 import { DeepPartial, EntityManager, FindOneOptions, SaveOptions } from "typeorm";
-import { GetAllOptions, GetByIdsOptions, GetManyOptions, GetOneOptions, IBaseEntity } from "./interfaces";
+import {
+    GetAllOptions,
+    GetByIdsOptions,
+    GetManyOptions,
+    GetOneOptions,
+    IBaseEntity,
+    PaginationOptions,
+} from "./interfaces";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 import { FindConditions } from "./types";
 import { EntityUtils } from "./utils";
@@ -12,7 +18,8 @@ import { Operation } from "./enums";
 import { EntityErrors } from "./responses";
 import { TypeORMErrorHandler } from "./types/error-handler.type";
 import { CrudServiceMissingParamsException } from "./exceptions/crud-service-missing-params.exception";
-import { IStatusResponse, IPaginatedResponse } from "hichchi-nestjs-common/interfaces";
+import { IStatusResponse, IPaginatedResponse, IUserEntity } from "hichchi-nestjs-common/interfaces";
+import { isUUID } from "class-validator";
 
 export class CrudService<Entity extends IBaseEntity> {
     constructor(
@@ -30,11 +37,12 @@ export class CrudService<Entity extends IBaseEntity> {
     async save<T extends DeepPartial<Entity>>(
         createDto: T,
         options?: SaveOptions & FindOneOptions<Entity>,
+        createdBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<Entity> {
         try {
-            return await this.repository.saveAndGet(createDto, { ...options }, manager);
+            return await this.repository.saveAndGet({ ...createDto, createdBy }, { ...options }, manager);
         } catch (e: any) {
             if (eh) {
                 const err = eh(e);
@@ -47,13 +55,17 @@ export class CrudService<Entity extends IBaseEntity> {
     }
 
     async saveMany<T extends DeepPartial<Entity>>(
-        createDto: T[],
+        createDtos: T[],
         options?: SaveOptions,
+        createdBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<Entity[]> {
         try {
-            return await this.repository.saveMany(createDto, options, manager);
+            if (createdBy) {
+                createDtos = createDtos.map((createDto) => ({ ...createDto, createdBy }));
+            }
+            return await this.repository.saveMany(createDtos, options, manager);
         } catch (e: any) {
             if (eh) {
                 const err = eh(e);
@@ -69,11 +81,15 @@ export class CrudService<Entity extends IBaseEntity> {
         id: string,
         updateDto: T,
         options?: FindOneOptions<Entity>,
+        updatedBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<Entity> {
         try {
-            const { affected } = await this.repository.update(id, updateDto, manager);
+            if (!isUUID(id, 4)) {
+                return Promise.reject(new NotFoundException(EntityErrors.E_400_ID(this.entityName)));
+            }
+            const { affected } = await this.repository.update(id, { ...updateDto, updatedBy }, manager);
             if (affected !== 0) {
                 return this.get(id, options, manager);
             }
@@ -92,11 +108,12 @@ export class CrudService<Entity extends IBaseEntity> {
     async updateOne<T extends QueryDeepPartialEntity<Entity>>(
         conditions: FindConditions<Entity>,
         updateDto: T,
+        updatedBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<IStatusResponse> {
         try {
-            const { affected } = await this.repository.updateOne(conditions, updateDto, manager);
+            const { affected } = await this.repository.updateOne(conditions, { ...updateDto, updatedBy }, manager);
             if (affected !== 0) {
                 return EntityUtils.handleSuccess(Operation.UPDATE, this.entityName);
             }
@@ -115,11 +132,12 @@ export class CrudService<Entity extends IBaseEntity> {
     async updateMany<T extends QueryDeepPartialEntity<Entity>>(
         conditions: FindConditions<Entity>,
         updateDto: T,
+        updatedBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<IStatusResponse> {
         try {
-            const { affected } = await this.repository.updateMany(conditions, updateDto, manager);
+            const { affected } = await this.repository.updateMany(conditions, { ...updateDto, updatedBy }, manager);
             if (affected !== 0) {
                 return EntityUtils.handleSuccess(Operation.UPDATE, this.entityName);
             }
@@ -137,11 +155,15 @@ export class CrudService<Entity extends IBaseEntity> {
     async updateByIds<T extends QueryDeepPartialEntity<Entity>>(
         ids: number[],
         updateDto: T,
+        updatedBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<IStatusResponse> {
+        if (ids.some((id) => !isUUID(id, 4))) {
+            return Promise.reject(new NotFoundException(EntityErrors.E_400_ID(this.entityName)));
+        }
         try {
-            const { affected } = await this.repository.updateByIds(ids, updateDto, manager);
+            const { affected } = await this.repository.updateByIds(ids, { ...updateDto, updatedBy }, manager);
             if (affected !== 0) {
                 return EntityUtils.handleSuccess(Operation.UPDATE, this.entityName);
             }
@@ -163,6 +185,9 @@ export class CrudService<Entity extends IBaseEntity> {
         eh?: TypeORMErrorHandler,
     ): Promise<Entity> {
         try {
+            if (!isUUID(id, 4)) {
+                return Promise.reject(new NotFoundException(EntityErrors.E_400_ID(this.entityName)));
+            }
             const entity = await this.repository.get(id, options, manager);
             if (entity) {
                 return entity;
@@ -204,6 +229,9 @@ export class CrudService<Entity extends IBaseEntity> {
         eh?: TypeORMErrorHandler,
     ): Promise<Entity[]> {
         try {
+            if (getByIds.ids.some((id) => !isUUID(id, 4))) {
+                return Promise.reject(new NotFoundException(EntityErrors.E_400_ID(this.entityName)));
+            }
             return await this.repository.getByIds(getByIds, manager);
         } catch (e: any) {
             if (eh) {
@@ -241,8 +269,13 @@ export class CrudService<Entity extends IBaseEntity> {
         }
     }
 
-    async getAll(
-        getAll?: GetAllOptions<Entity>,
+    getAll<Options extends GetAllOptions<Entity>>(
+        getAll?: Options,
+        manager?: EntityManager,
+        eh?: TypeORMErrorHandler,
+    ): Options extends { pagination: PaginationOptions } ? Promise<IPaginatedResponse<Entity>> : Promise<Entity[]>;
+    async getAll<Options extends GetAllOptions<Entity>>(
+        getAll?: Options,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<IPaginatedResponse<Entity> | Entity[]> {
@@ -290,12 +323,15 @@ export class CrudService<Entity extends IBaseEntity> {
 
     async delete(
         id: string,
-        deletedBy: string,
         wipe?: boolean,
+        deletedBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<Entity> {
         try {
+            if (!isUUID(id, 4)) {
+                return Promise.reject(new NotFoundException(EntityErrors.E_400_ID(this.entityName)));
+            }
             let deletedRecord = await this.get(id, undefined, manager);
             const { affected } = wipe
                 ? await this.repository.hardDelete(id, manager)
@@ -303,7 +339,7 @@ export class CrudService<Entity extends IBaseEntity> {
             if (affected !== 0) {
                 if (!wipe && deletedBy) {
                     try {
-                        deletedRecord = await this.update(id, { deletedBy } as any, undefined, manager);
+                        deletedRecord = await this.update(id, {} as any, undefined, deletedBy, manager);
                     } catch (err: any) {}
                 }
                 return deletedRecord;
@@ -322,8 +358,8 @@ export class CrudService<Entity extends IBaseEntity> {
 
     async deleteByIds(
         ids: number[],
-        deletedBy?: string,
         wipe?: boolean,
+        deletedBy?: IUserEntity,
         manager?: EntityManager,
         eh?: TypeORMErrorHandler,
     ): Promise<IStatusResponse> {
@@ -333,7 +369,7 @@ export class CrudService<Entity extends IBaseEntity> {
                 : await this.repository.deleteByIds(ids, manager);
             if (affected !== 0) {
                 if (!wipe && deletedBy) {
-                    await this.updateByIds(ids, { deletedBy } as any, manager);
+                    await this.updateByIds(ids, {} as any, deletedBy, manager);
                 }
                 return EntityUtils.handleSuccess(Operation.DELETE, this.entityName);
             }
