@@ -1,0 +1,1 @@
+{"version":3,"file":"crud.responses.d.ts","sourceRoot":"","sources":["../src/responses/crud.responses.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,kCAAkC,CAAC;AAGnE,QAAA,MAAM,eAAe;0BACK,MAAM,KAAG,eAAe;yBAMzB,MAAM,KAAG,eAAe;uBAM1B,MAAM,KAAG,eAAe;;;;;CAU9C,CAAC;AAEF,OAAO,EAAE,eAAe,EAAE,CAAC"}
