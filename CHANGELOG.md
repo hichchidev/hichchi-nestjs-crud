@@ -1,5 +1,11 @@
 # hichchi-nestjs-crud
 
+## 0.0.5
+
+### Patch Changes
+
+- bd9c0e1: Fix interfaces
+
 ## 0.0.4
 
 ### Patch Changes
