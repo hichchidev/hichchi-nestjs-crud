@@ -1,5 +1,11 @@
 # hichchi-nestjs-crud
 
+## 0.0.4
+
+### Patch Changes
+
+- 9ed2c07: Added Page and Sort Decorators
+
 ## 0.0.3
 
 ### Patch Changes
