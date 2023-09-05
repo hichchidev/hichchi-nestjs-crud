@@ -1,5 +1,5 @@
 import { toLowerCaseBreak, toSentenceCase, toSnakeCase, toUpperCaseBreak } from "hichchi-utils";
-import { ICrudErrorResponses } from "../interfaces/crud-error-responses.interface";
+import { ICrudErrorResponses } from "../interfaces";
 import { IEntityErrorResponse } from "hichchi-nestjs-common/interfaces";
 
 const EntityErrors: ICrudErrorResponses = {
