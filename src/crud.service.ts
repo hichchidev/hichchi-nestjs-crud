@@ -16,7 +16,7 @@ import { FindConditions } from "./types";
 import { EntityUtils } from "./utils";
 import { Operation } from "./enums";
 import { EntityErrors } from "./responses";
-import { TypeORMErrorHandler } from "./types/error-handler.type";
+import { TypeORMErrorHandler } from "./types";
 import { CrudServiceMissingParamsException } from "./exceptions/crud-service-missing-params.exception";
 import { IStatusResponse, IPaginatedResponse, IUserEntity } from "hichchi-nestjs-common/interfaces";
 import { isUUID } from "class-validator";
@@ -244,6 +244,11 @@ export class CrudService<Entity extends IBaseEntity> {
         }
     }
 
+    getMany<Options extends GetManyOptions<Entity>>(
+        getMany?: Options,
+        manager?: EntityManager,
+        eh?: TypeORMErrorHandler,
+    ): Options extends { pagination: PaginationOptions } ? Promise<IPaginatedResponse<Entity>> : Promise<Entity[]>;
     async getMany(
         getMany: GetManyOptions<Entity>,
         manager?: EntityManager,
