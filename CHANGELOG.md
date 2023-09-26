@@ -1,5 +1,11 @@
 # hichchi-nestjs-crud
 
+## 0.0.6
+
+### Patch Changes
+
+- 2369ef1: Added join string to toUpperCaseBreak in error methods.
+
 ## 0.0.5
 
 ### Patch Changes
