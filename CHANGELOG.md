@@ -1,5 +1,11 @@
 # hichchi-nestjs-crud
 
+## 0.0.7
+
+### Patch Changes
+
+- 237f04c: Add passing constraints enum support
+
 ## 0.0.6
 
 ### Patch Changes
