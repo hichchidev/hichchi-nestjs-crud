@@ -9,6 +9,8 @@ import { BaseRepository } from "./base-repository";
 import { IBaseEntity } from "./interfaces";
 import { Constructor } from "@nestjs/common/utils/merge-with-values.util";
 import { CONNECTION_OPTIONS } from "./tokens";
+import { EntityConstraints } from "./interfaces/entity-constraint.interface";
+import { EntityUtils } from "./utils";
 
 type CustomEntityConstructor<Entity extends IBaseEntity> = new (
     ...args: ConstructorParameters<Constructor<Entity>>
@@ -21,6 +23,8 @@ type CustomRepositoryConstructor<Entity extends IBaseEntity, T extends BaseRepos
 @Module({})
 export class HichchiCrudModule {
     static forRoot(options: ConnectionOptions): DynamicModule {
+        HichchiCrudModule.isValidConstraints(options.constraints);
+
         return {
             module: HichchiCrudModule,
             imports: [
@@ -47,6 +51,7 @@ export class HichchiCrudModule {
                     provide: CONNECTION_OPTIONS,
                     useValue: options,
                 },
+                EntityUtils,
             ],
         };
     }
@@ -86,5 +91,20 @@ export class HichchiCrudModule {
             providers,
             exports: providers,
         };
+    }
+
+    public static isValidConstraints(constraints: EntityConstraints): boolean {
+        const regExp = /^(UNIQUE|FK)_[a-zA-Z]\w+_[a-zA-Z]\w+$/;
+
+        for (const constraint of Object.values(constraints)) {
+            if (!constraint.match(regExp)) {
+                throw new Error(
+                    `Invalid constraint format provided to HichchiCrudModule.forRoot(): '${constraint}'. ` +
+                        `Constraints must follow the format 'UNIQUE_entityName_fieldName' or 'FK_entityName_entityName'.`,
+                );
+            }
+        }
+
+        return Object.values(constraints).every((constraint) => regExp.test(constraint));
     }
 }

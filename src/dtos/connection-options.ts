@@ -1,4 +1,5 @@
 import { DatabaseType } from "typeorm";
+import { EntityConstraintValue } from "../types/entity-constraint-value.type";
 
 export class ConnectionOptions {
     type: DatabaseType;
@@ -13,4 +14,5 @@ export class ConnectionOptions {
     legacySpatialSupport: boolean;
     keepConnectionAlive: boolean;
     autoLoadEntities: boolean;
+    constraints?: { [key: string]: EntityConstraintValue };
 }
