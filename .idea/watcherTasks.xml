@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="run build:dev &amp;&amp; rimraf &quot;C:/Workspace/Personal/Web/crm/crm-api/node_modules/hichchi-nestjs-crud&quot; &amp;&amp; cpx &quot;dist/**&quot; &quot;C:/Workspace/Personal/Web/crm/crm-api/node_modules/hichchi-nestjs-crud&quot; &amp;&amp; cpx &quot;package.json&quot; &quot;C:/Workspace/Personal/Web/crm/crm-api/node_modules/hichchi-nestjs-crud&quot; &amp;&amp; cpx &quot;node_modules&quot; &quot;C:/Workspace/Personal/Web/crm/crm-api/node_modules/hichchi-nestjs-crud&quot;" />
+      <option name="arguments" value="run build-and-copy" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ALWAYS" />
-      <option name="fileExtension" value="ts" />
+      <option name="fileExtension" value="*" />
       <option name="immediateSync" value="false" />
       <option name="name" value="build" />
       <option name="output" value="" />

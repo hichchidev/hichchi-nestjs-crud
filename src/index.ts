@@ -5,5 +5,5 @@ export * from "./dtos";
 export * from "./enums";
 export * from "./interfaces";
 export * from "./types";
-export * from "./base-entity";
+export * from "./base-entity-template";
 export * from "./base-repository";

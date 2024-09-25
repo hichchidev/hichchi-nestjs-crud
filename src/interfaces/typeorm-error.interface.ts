@@ -12,5 +12,6 @@ export interface TypeORMError {
     errno: number;
     sqlState: string;
     sqlMessage: string;
+    message: string;
     sql: string;
 }

@@ -1,4 +1,4 @@
-import { EntityConstraintValue } from "../types/entity-constraint-value.type";
+import { EntityConstraintValue } from "../types";
 
 export interface EntityConstraints {
     [key: string]: EntityConstraintValue;

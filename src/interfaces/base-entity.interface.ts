@@ -1,9 +1,11 @@
+import { IUserEntity } from "hichchi-nestjs-common/interfaces";
+
 export interface IBaseEntity {
     id: string;
     createdAt: Date;
-    createdBy?: string;
+    createdBy?: IUserEntity;
     updatedAt: Date;
-    updatedBy?: string;
+    updatedBy?: IUserEntity;
     deletedAt?: Date;
-    deletedBy?: string;
+    deletedBy?: IUserEntity;
 }

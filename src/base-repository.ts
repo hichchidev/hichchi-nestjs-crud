@@ -8,6 +8,7 @@ import {
     FindManyOptions,
     FindOneOptions,
     FindOperator,
+    FindOptionsWhere,
     ILike,
     In,
     Not,
@@ -20,94 +21,70 @@ import { FindConditions } from "./types";
 import { GetByIdsOptions, GetManyOptions, GetOneOptions } from "./interfaces";
 
 export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entity> {
+    private static _transactionalManager?: EntityManager;
+
     constructor(repository: Repository<Entity>) {
         super(repository?.target, repository?.manager, repository?.queryRunner);
     }
 
-    save<T extends DeepPartial<Entity>>(
-        entity: T,
-        options?: SaveOptions,
-        manager?: EntityManager,
-    ): Promise<T & Entity> {
-        if (manager) {
-            return manager.getRepository(this.target).save(entity, options);
-        }
-        return super.save(entity, options);
+    get entityRepository(): Repository<Entity> {
+        return (BaseRepository._transactionalManager ?? this.manager).getRepository(this.target);
+    }
+
+    create(): Entity;
+    create<T extends DeepPartial<Entity>>(entityLike: T): Entity;
+    create<T extends DeepPartial<Entity>>(entityLikeArray: T[]): Entity[];
+    create<T extends DeepPartial<Entity>>(entityLike?: T | T[]): Entity | Entity[] {
+        return super.create(entityLike as T);
+    }
+
+    save<T extends DeepPartial<Entity>>(entityLike: T, options?: SaveOptions): Promise<T & Entity> {
+        return this.entityRepository.save(entityLike, options);
     }
 
     async saveAndGet<T extends DeepPartial<Entity>>(
-        entity: T,
+        entityLike: T,
         options?: SaveOptions & FindOneOptions<Entity>,
-        manager?: EntityManager,
     ): Promise<Entity> {
-        const newEntity = await this.save(entity, options, manager);
-        return this.get(newEntity.id, options, manager);
+        const newEntity = await this.save(entityLike, options);
+        return this.get(newEntity.id, options);
     }
 
-    saveMany<T extends DeepPartial<Entity>>(
-        entities: T[],
-        options?: SaveOptions,
-        manager?: EntityManager,
-    ): Promise<(T & Entity)[]> {
-        if (manager) {
-            return manager.getRepository(this.target).save(entities, options);
-        }
-        return super.save(entities, options);
+    saveMany<T extends DeepPartial<Entity>>(entities: T[], options?: SaveOptions): Promise<(T & Entity)[]> {
+        return this.entityRepository.save(entities, options);
     }
 
-    update(id: string, partialEntity: QueryDeepPartialEntity<Entity>, manager?: EntityManager): Promise<UpdateResult> {
-        if (manager) {
-            return manager.getRepository(this.target).update(id, partialEntity);
-        }
-        return super.update(id, partialEntity);
+    update(id: string, partialEntity: QueryDeepPartialEntity<Entity>): Promise<UpdateResult> {
+        return this.entityRepository.update(id, partialEntity);
     }
 
     async updateAndGet(
         id: string,
         partialEntity: QueryDeepPartialEntity<Entity>,
         options?: FindOneOptions<Entity>,
-        manager?: EntityManager,
     ): Promise<Entity> {
-        await this.update(id, partialEntity, manager);
-        return this.get(id, options, manager);
+        await this.update(id, partialEntity);
+        return this.get(id, options);
     }
 
-    updateOne(
-        conditions: FindConditions<Entity>,
-        partialEntity: QueryDeepPartialEntity<Entity>,
-        manager?: EntityManager,
-    ): Promise<UpdateResult> {
-        if (manager) {
-            return manager.getRepository(this.target).update(conditions, partialEntity);
-        }
-        return super.update(conditions, partialEntity);
+    updateOne(where: FindOptionsWhere<Entity>, partialEntity: QueryDeepPartialEntity<Entity>): Promise<UpdateResult> {
+        return this.entityRepository.update(where, partialEntity);
     }
 
-    updateMany(
-        findConditions: FindConditions<Entity>,
-        partialEntity: QueryDeepPartialEntity<Entity>,
-        manager?: EntityManager,
-    ): Promise<UpdateResult> {
-        if (manager) {
-            return manager.getRepository(this.target).update(findConditions, partialEntity);
-        }
-        return super.update(findConditions, partialEntity);
+    updateMany(where: FindConditions<Entity>, partialEntity: QueryDeepPartialEntity<Entity>): Promise<UpdateResult> {
+        return this.entityRepository.update(where, partialEntity);
     }
 
-    updateByIds(
-        ids: number[],
-        partialEntity: QueryDeepPartialEntity<Entity>,
-        manager?: EntityManager,
-    ): Promise<UpdateResult> {
-        return this.updateMany({ id: In(ids) as any }, partialEntity, manager);
+    updateByIds(ids: string[], partialEntity: QueryDeepPartialEntity<Entity>): Promise<UpdateResult> {
+        return this.updateMany({ id: In(ids) as any }, partialEntity);
     }
 
-    get(id: string, options: FindOneOptions<Entity>, manager?: EntityManager): Promise<Entity | undefined> {
-        return this.getOne({ ...options, where: { id } } as any, manager);
+    get(id: string, options?: FindOneOptions<Entity>): Promise<Entity | undefined> {
+        return this.getOne({ ...options, where: { id } } as any);
     }
 
-    getOne(getOne: GetOneOptions<Entity>, manager?: EntityManager): Promise<Entity | undefined> {
-        const { where, not, search, relations, options } = getOne;
+    getOne(getOne: GetOneOptions<Entity>): Promise<Entity | undefined> {
+        const { where, not, search, sort, relations, options } = getOne;
         const opt = options ?? {};
         opt.where = where ?? {};
         if (not) {
@@ -119,13 +96,13 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
         if (relations) {
             opt.relations = relations;
         }
-        if (manager) {
-            return manager.getRepository(this.target).findOne(opt);
+        if (sort) {
+            opt.order = sort;
         }
-        return super.findOne(opt);
+        return this.entityRepository.findOne(opt);
     }
 
-    async getByIds(getByIds: GetByIdsOptions<Entity>, manager?: EntityManager): Promise<Entity[]> {
+    async getByIds(getByIds: GetByIdsOptions<Entity>): Promise<Entity[]> {
         const { ids, relations, pagination, sort, options } = getByIds;
         const opt = options ?? {};
         if (relations) {
@@ -139,11 +116,11 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
             opt.order = sort;
         }
         opt.where = { id: In(ids) as any };
-        const [entities] = await this.getMany(opt, manager);
+        const [entities] = await this.getMany(opt);
         return entities;
     }
 
-    getMany(getMany?: GetManyOptions<Entity>, manager?: EntityManager): Promise<[Entity[], number]> {
+    getMany(getMany?: GetManyOptions<Entity>): Promise<[Entity[], number]> {
         const { filters, where, not, search, relations, pagination, sort, options } = getMany ?? {};
         const opt = options ?? {};
         opt.where = where ?? {};
@@ -155,10 +132,9 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
             });
         }
         if (not) {
-            opt.where = this.mapWhere(opt.where, not, Not);
-        }
-        if (search) {
-            opt.where = this.mapWhere(opt.where, search, ILike, "%{}%");
+            opt.where = this.mapWhereSearchOrNot(opt.where, not, Not);
+        } else if (search) {
+            opt.where = this.mapWhereSearchOrNot(opt.where, search, ILike);
         }
         if (relations) {
             opt.relations = relations;
@@ -170,49 +146,57 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
         if (sort) {
             opt.order = sort;
         }
-        if (manager) {
-            return manager.getRepository(this.target).findAndCount(opt);
-        }
-        return super.findAndCount(opt);
+        return this.entityRepository.findAndCount(opt);
     }
 
-    delete(id: string, manager?: EntityManager): Promise<DeleteResult> {
-        if (manager) {
-            return manager.getRepository(this.target).softDelete(id);
-        }
-        return super.softDelete(id);
+    delete(id: string): Promise<DeleteResult> {
+        return this.entityRepository.softDelete(id);
     }
 
-    deleteByIds(ids: number[], manager?: EntityManager): Promise<DeleteResult> {
-        if (manager) {
-            return manager.getRepository(this.target).softDelete(ids);
-        }
-        return super.softDelete(ids);
+    deleteByIds(ids: string[]): Promise<DeleteResult> {
+        return this.entityRepository.softDelete(ids);
     }
 
-    hardDelete(id: string, manager?: EntityManager): Promise<DeleteResult> {
-        if (manager) {
-            return manager.getRepository(this.target).delete(id);
-        }
-        return super.delete(id);
+    hardDelete(id: string): Promise<DeleteResult> {
+        return this.entityRepository.delete(id);
     }
 
-    hardDeleteByIds(ids: number[], manager?: EntityManager): Promise<DeleteResult> {
-        if (manager) {
-            return manager.getRepository(this.target).delete(ids);
-        }
-        return super.delete(ids);
+    hardDeleteByIds(ids: string[]): Promise<DeleteResult> {
+        return this.entityRepository.delete(ids);
     }
 
-    count(options?: FindManyOptions<Entity>, manager?: EntityManager): Promise<number> {
-        if (manager) {
-            return manager.getRepository(this.target).count(options);
-        }
-        return super.count(options);
+    count(options?: FindManyOptions<Entity>): Promise<number> {
+        return this.entityRepository.count(options);
     }
 
-    transaction<T>(operation: (entityManager: EntityManager) => Promise<T>): Promise<T> {
-        return this.manager.transaction(operation);
+    async transaction(operation: (manager: EntityManager) => Promise<Entity>): Promise<Entity> {
+        if (BaseRepository._transactionalManager) {
+            return operation(BaseRepository._transactionalManager);
+        }
+        return this.manager.transaction(async (manager: EntityManager): Promise<Entity> => {
+            BaseRepository._transactionalManager = manager;
+            return operation(manager).finally(() => {
+                BaseRepository._transactionalManager = undefined;
+            });
+        });
+    }
+
+    mapWhereSearchOrNot(
+        where: FindOptionsWhere<Entity> | FindOptionsWhere<Entity>[],
+        search: FindOptionsWhere<Entity> | FindOptionsWhere<Entity>[],
+        operator: <T>(value: FindOperator<T> | T) => FindOperator<T>,
+    ): any {
+        const searchEntries = Object.entries(search);
+        if (searchEntries.length > 1) {
+            const whr = [];
+            searchEntries.forEach(([key, value]) => {
+                whr.push(this.mapWhere(where, { [key]: value }, operator, "%{}%"));
+            });
+            where = whr;
+        } else {
+            where = this.mapWhere(where, search, operator, "%{}%");
+        }
+        return where;
     }
 
     mapWhere(
@@ -221,17 +205,24 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
         operator: <T>(value: FindOperator<T> | T) => FindOperator<T>,
         wrap?: `${string}{}${string}`,
     ): any {
-        const whr = where ?? {};
-        if (typeof data === "object") {
+        const whr = { ...where } ?? {};
+        if ((data as FindOperator<Entity>) instanceof FindOperator) {
+            return data;
+        } else if (typeof data === "object") {
             for (const key in data) {
                 if (typeof data[key] === "object") {
                     whr[key] = this.mapWhere(whr[key], data[key], operator, wrap);
                 } else {
-                    whr[key] = wrap ? operator(wrap.replace("{}", data[key])) : operator(data[key]);
+                    if (data[key] !== undefined) {
+                        whr[key] =
+                            operator && wrap
+                                ? operator(wrap.replace("{}", data[key]))
+                                : operator?.(data[key]) ?? data[key];
+                    }
                 }
             }
             return whr;
         }
-        return wrap ? operator(data) : operator(data);
+        return operator(data);
     }
 }

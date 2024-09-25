@@ -1,24 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
 
-import { Module, DynamicModule, Provider } from "@nestjs/common";
-import { CUSTOM_REPOSITORY } from "./decorators";
-import { getDataSourceToken, TypeOrmModule } from "@nestjs/typeorm";
-import { DataSource, Repository } from "typeorm";
+import { Module, DynamicModule } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConnectionOptions } from "./dtos";
-import { BaseRepository } from "./base-repository";
 import { IBaseEntity } from "./interfaces";
-import { Constructor } from "@nestjs/common/utils/merge-with-values.util";
 import { CONNECTION_OPTIONS } from "./tokens";
-import { EntityConstraints } from "./interfaces/entity-constraint.interface";
+import { EntityConstraints } from "./interfaces";
 import { EntityUtils } from "./utils";
-
-type CustomEntityConstructor<Entity extends IBaseEntity> = new (
-    ...args: ConstructorParameters<Constructor<Entity>>
-) => IBaseEntity;
-
-type CustomRepositoryConstructor<Entity extends IBaseEntity, T extends BaseRepository<Entity>> = new (
-    ...args: ConstructorParameters<Constructor<T>>
-) => T;
+import { CustomEntityConstructor } from "./types";
 
 @Module({})
 export class HichchiCrudModule {
@@ -64,34 +53,34 @@ export class HichchiCrudModule {
         };
     }
 
-    public static forCustomRepository<Entity extends IBaseEntity, T extends BaseRepository<Entity>>(
-        repositories: CustomRepositoryConstructor<Entity, T>[],
-    ): DynamicModule {
-        const providers: Provider[] = [];
-
-        for (const repository of repositories) {
-            const entity = Reflect.getMetadata(CUSTOM_REPOSITORY, repository);
-
-            if (!entity) {
-                continue;
-            }
-
-            providers.push({
-                inject: [getDataSourceToken()],
-                provide: repository,
-                useFactory: (dataSource: DataSource): BaseRepository<Entity> => {
-                    const customRepository: Repository<Entity> = dataSource.getRepository<Entity>(entity);
-                    return new repository(customRepository);
-                },
-            });
-        }
-
-        return {
-            module: HichchiCrudModule,
-            providers,
-            exports: providers,
-        };
-    }
+    // public static forCustomRepository<Entity extends IBaseEntity, T extends BaseRepository<Entity>>(
+    //     repositories: CustomRepositoryConstructor<Entity, T>[],
+    // ): DynamicModule {
+    //     const providers: Provider[] = [];
+    //
+    //     for (const repository of repositories) {
+    //         const entity = Reflect.getMetadata(CUSTOM_REPOSITORY, repository);
+    //
+    //         if (!entity) {
+    //             continue;
+    //         }
+    //
+    //         providers.push({
+    //             inject: [getDataSourceToken()],
+    //             provide: repository,
+    //             useFactory: (dataSource: DataSource): BaseRepository<Entity> => {
+    //                 const customRepository: Repository<Entity> = dataSource.getRepository<Entity>(entity);
+    //                 return new repository(customRepository);
+    //             },
+    //         });
+    //     }
+    //
+    //     return {
+    //         module: HichchiCrudModule,
+    //         providers,
+    //         exports: providers,
+    //     };
+    // }
 
     public static isValidConstraints(constraints: EntityConstraints): boolean {
         const regExp = /^(UNIQUE|FK)_[a-zA-Z]\w+_[a-zA-Z]\w+$/;

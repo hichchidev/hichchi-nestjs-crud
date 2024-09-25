@@ -1,20 +1,11 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { createParamDecorator, ExecutionContext } from "@nestjs/common";
-import { ISort } from "../types/sort.type";
+import { SortOptions } from "../types";
 import { Request } from "express";
+import { parseSortOptions } from "../utils/http.utils";
 
-export const Sorter = createParamDecorator((_data: any, ctx: ExecutionContext): ISort<unknown> => {
+export const Sorter = createParamDecorator((_data: any, ctx: ExecutionContext): SortOptions | undefined => {
     const req: Request = ctx.switchToHttp().getRequest();
-    const order: ISort<unknown> = {};
-    if (req.query?.sort && req.query?.sort !== "undefined") {
-        const sortColumns = (req.query.sort as string).split(",");
-        sortColumns.forEach((column: string) => {
-            const property: string[] = column.split(".");
-            const sortColumn: string = property[0];
-            const sortOrder: string = property[1].toUpperCase();
-            order[sortColumn] = sortOrder === "ASC" ? "ASC" : "DESC";
-        });
-    }
-    return order;
+    return typeof req.query?.sort === "string" ? parseSortOptions(req.query.sort) : undefined;
 });

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Add passing constraints enum support">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/paginated-response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decorators/filter.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decorators/repository.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decorators/search.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/custom-entity-constructor.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/filter-options.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/http.utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base-entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-entity-template.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/crud.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/crud.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/custom-repository.decorator.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/page.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/page.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/sort.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/sort.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/connection-options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/connection-options.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hichchi-crud.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hichchi-crud.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/base-entity.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/base-entity.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/crud-error-responses.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/crud-error-responses.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/crud-options.interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/crud-options.interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/entity-constraint.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/entity-constraint.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/paginaton.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/typeorm-error.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/typeorm-error.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/responses/crud.error.responses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/responses/crud.error.responses.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/sort.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/sort-options.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/crud.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/entity.utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="f001b876-cba8-44b5-b660-dc2aac369ff6" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2dFryPJceBtZ8d1OytIgWAL4VBU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;8sef898sfse.sefsef.sefsefefsf-E_esf&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Workspace/Personal/npm/hichchi-nestjs-crud/node_modules&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Workspace\\Personal\\npm\\hichchi-nestjs-crud\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\node_modules" />
+      <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\interfaces" />
+      <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\decorators" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="" />
+      <created>1709614925545</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709614925545</updated>
+      <workItem from="1709614927929" duration="355000" />
+      <workItem from="1709713417369" duration="204000" />
+      <workItem from="1709756851687" duration="525000" />
+      <workItem from="1710948141722" duration="11779000" />
+      <workItem from="1711046312891" duration="76000" />
+      <workItem from="1711083236651" duration="102000" />
+      <workItem from="1711083347993" duration="3742000" />
+      <workItem from="1711122777987" duration="597000" />
+      <workItem from="1711123676821" duration="25000" />
+      <workItem from="1711280163128" duration="4498000" />
+      <workItem from="1711334596813" duration="3420000" />
+      <workItem from="1711401319213" duration="8042000" />
+      <workItem from="1711455681710" duration="76000" />
+      <workItem from="1711455771872" duration="6612000" />
+      <workItem from="1712048056265" duration="608000" />
+      <workItem from="1712079632945" duration="42000" />
+      <workItem from="1712127895058" duration="997000" />
+      <workItem from="1712217501216" duration="4203000" />
+      <workItem from="1712321655669" duration="821000" />
+      <workItem from="1712326048783" duration="572000" />
+      <workItem from="1712330202205" duration="8092000" />
+      <workItem from="1712348437052" duration="541000" />
+      <workItem from="1712388315639" duration="20000" />
+      <workItem from="1712388716161" duration="1387000" />
+      <workItem from="1714241375490" duration="2106000" />
+      <workItem from="1714243848150" duration="142000" />
+      <workItem from="1714481473551" duration="10156000" />
+      <workItem from="1714724224386" duration="6640000" />
+      <workItem from="1714810013857" duration="7493000" />
+      <workItem from="1714894897837" duration="5949000" />
+      <workItem from="1715196980510" duration="2494000" />
+      <workItem from="1715223819777" duration="364000" />
+      <workItem from="1715224337123" duration="1603000" />
+      <workItem from="1715337512652" duration="1616000" />
+      <workItem from="1715414197340" duration="3585000" />
+      <workItem from="1715570714139" duration="59000" />
+      <workItem from="1716363781919" duration="1095000" />
+      <workItem from="1716366141744" duration="33000" />
+      <workItem from="1716397680410" duration="906000" />
+      <workItem from="1716712000337" duration="586000" />
+      <workItem from="1717175729266" duration="1792000" />
+      <workItem from="1717583097357" duration="332000" />
+      <workItem from="1717988739504" duration="309000" />
+      <workItem from="1718188938143" duration="1073000" />
+      <workItem from="1718478308493" duration="6520000" />
+      <workItem from="1718537007740" duration="622000" />
+      <workItem from="1719809477970" duration="26000" />
+      <workItem from="1720281406576" duration="22000" />
+      <workItem from="1720416007840" duration="108000" />
+      <workItem from="1723448697391" duration="688000" />
+      <workItem from="1727259605799" duration="337000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add passing constraints enum support">
+      <option name="closed" value="true" />
+      <created>1710968399144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710968399145</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add passing constraints enum support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add passing constraints enum support" />
+  </component>
+</project>

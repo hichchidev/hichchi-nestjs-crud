@@ -1,5 +1,5 @@
 import { DatabaseType } from "typeorm";
-import { EntityConstraintValue } from "../types/entity-constraint-value.type";
+import { EntityConstraintValue } from "../types";
 
 export class ConnectionOptions {
     type: DatabaseType;

@@ -1,1 +1,1 @@
-export * from "./crud.utils";
+export * from "./entity.utils";
