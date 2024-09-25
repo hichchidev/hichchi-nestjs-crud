@@ -205,7 +205,7 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
         operator: <T>(value: FindOperator<T> | T) => FindOperator<T>,
         wrap?: `${string}{}${string}`,
     ): any {
-        const whr = { ...where } ?? {};
+        const whr = where ? { ...where } : {};
         if ((data as FindOperator<Entity>) instanceof FindOperator) {
             return data;
         } else if (typeof data === "object") {
