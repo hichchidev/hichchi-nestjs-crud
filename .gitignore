@@ -35,3 +35,11 @@
 /tokens.d.ts.map
 /tokens.js
 /tokens.js.map
+/base-entity-template.d.ts
+/base-entity-template.d.ts.map
+/base-entity-template.js
+/base-entity-template.js.map
+/classes/paginated-response.d.ts
+/classes/paginated-response.d.ts.map
+/classes/paginated-response.js
+/classes/paginated-response.js.map

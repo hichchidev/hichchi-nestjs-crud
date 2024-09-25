@@ -7,41 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Add passing constraints enum support">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/paginated-response.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/decorators/filter.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/decorators/repository.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/decorators/search.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/custom-entity-constructor.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/filter-options.type.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/http.utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Various feature updates">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base-entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-entity-template.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/crud.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/crud.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorators/custom-repository.decorator.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorators/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorators/page.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/page.decorator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decorators/sort.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/sort.decorator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/connection-options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/connection-options.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hichchi-crud.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hichchi-crud.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/base-entity.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/base-entity.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/crud-error-responses.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/crud-error-responses.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/crud-options.interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/crud-options.interfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/entity-constraint.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/entity-constraint.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/paginaton.interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/typeorm-error.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/typeorm-error.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/responses/crud.error.responses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/responses/crud.error.responses.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/sort.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/sort-options.type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/crud.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/entity.utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,34 +47,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last.edited.regexp&quot;: &quot;8sef898sfse.sefsef.sefsefefsf-E_esf&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Workspace/Personal/npm/hichchi-nestjs-crud/node_modules&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Workspace\\Personal\\npm\\hichchi-nestjs-crud\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last.edited.regexp": "8sef898sfse.sefsef.sefsefefsf-E_esf",
+    "last_opened_file_path": "C:/Workspace/Personal/npm/hichchi-nestjs-crud/node_modules",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build:dev.executor": "Run",
+    "prettier.import.notification.dismissed": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "watcher.settings",
+    "ts.external.directory.path": "C:\\Workspace\\Personal\\npm\\hichchi-nestjs-crud\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\node_modules" />
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\interfaces" />
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\decorators" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="build:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build:dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -172,7 +159,8 @@
       <workItem from="1720281406576" duration="22000" />
       <workItem from="1720416007840" duration="108000" />
       <workItem from="1723448697391" duration="688000" />
-      <workItem from="1727259605799" duration="337000" />
+      <workItem from="1727259605799" duration="472000" />
+      <workItem from="1727260591494" duration="449000" />
     </task>
     <task id="LOCAL-00001" summary="Add passing constraints enum support">
       <option name="closed" value="true" />
@@ -182,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710968399145</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Various feature updates">
+      <option name="closed" value="true" />
+      <created>1727260138404</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727260138404</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +186,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add passing constraints enum support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add passing constraints enum support" />
+    <MESSAGE value="Various feature updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Various feature updates" />
   </component>
 </project>
