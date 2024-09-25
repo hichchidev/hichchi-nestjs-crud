@@ -1,5 +1,11 @@
 # hichchi-nestjs-crud
 
+## 1.0.0
+
+### Major Changes
+
+- 35c2ce4: Various feature updates
+
 ## 0.0.7
 
 ### Patch Changes
