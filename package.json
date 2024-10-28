@@ -11,10 +11,10 @@
     "prepublish": "npm run build",
     "release": "npm run build && changeset publish",
     "lint": "eslint",
-    "copy:dist": "cpx dist/** C:\\Workspace\\Personal\\Web\\retail-point\\retail-point-api\\node_modules\\hichchi-nestjs-crud",
-    "copy:package.json": "cpx package.json C:\\Workspace\\Personal\\Web\\retail-point\\retail-point-api\\node_modules\\hichchi-nestjs-crud",
-    "copy:node_modules": "cpx node_modules C:\\Workspace\\Personal\\Web\\retail-point\\retail-point-api\\node_modules\\hichchi-nestjs-crud",
-    "clean:crud-module": "rimraf C:\\Workspace\\Personal\\Web\\retail-point\\retail-point-api\\node_modules\\hichchi-nestjs-crud",
+    "copy:dist": "cpx dist/** C:\\Workspace\\TeamDevFusion\\TieTheKnots\\TieTheKnot-API\\node_modules\\hichchi-nestjs-crud",
+    "copy:package.json": "cpx package.json C:\\Workspace\\TeamDevFusion\\TieTheKnots\\TieTheKnot-API\\node_modules\\hichchi-nestjs-crud",
+    "copy:node_modules": "cpx node_modules C:\\Workspace\\TeamDevFusion\\TieTheKnots\\TieTheKnot-API\\node_modules\\hichchi-nestjs-crud",
+    "clean:crud-module": "rimraf C:\\Workspace\\TeamDevFusion\\TieTheKnots\\TieTheKnot-API\\node_modules\\hichchi-nestjs-crud",
     "build-and-copy": "npm-run-all build:dev clean:crud-module copy:dist copy:package.json copy:node_modules"
   },
   "repository": {
@@ -28,7 +28,7 @@
     "@nestjs/common": "^10.1.0",
     "@nestjs/typeorm": "^10.0.0",
     "@types/express": "^4.17.17",
-    "hichchi-nestjs-common": "^1.0.0",
+    "hichchi-nestjs-common": "^1.1.0",
     "hichchi-utils": "^1.0.8",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.17"

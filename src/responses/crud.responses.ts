@@ -20,6 +20,12 @@ const EntityResponses = {
             message: `${toSentenceCase(entityName)} saved successfully!`,
         };
     },
+    DELETE: (entityName: string): IStatusResponse => {
+        return {
+            status: true,
+            message: `${toSentenceCase(entityName)} deleted successfully!`,
+        };
+    },
     SUCCESS: {
         status: true,
         message: "success",

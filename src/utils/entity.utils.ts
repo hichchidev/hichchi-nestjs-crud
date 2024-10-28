@@ -79,6 +79,8 @@ export class EntityUtils {
                 return EntityResponses.UPDATE(entityName);
             case Operation.SAVE:
                 return EntityResponses.SAVE(entityName);
+            case Operation.DELETE:
+                return EntityResponses.DELETE(entityName);
             default:
                 return EntityResponses.SUCCESS;
         }

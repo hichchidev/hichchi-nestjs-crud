@@ -8,7 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Various feature updates">
-      <change beforePath="$PROJECT_DIR$/src/base-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-repository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.changeset/forty-paws-compare.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/crud.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/crud.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/connection-options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/connection-options.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hichchi-crud.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hichchi-crud.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/responses/crud.responses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/responses/crud.responses.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/entity.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/entity.utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,29 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last.edited.regexp": "8sef898sfse.sefsef.sefsefefsf-E_esf",
-    "last_opened_file_path": "C:/Workspace/Personal/npm/hichchi-nestjs-crud/node_modules",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build:dev.executor": "Run",
-    "prettier.import.notification.dismissed": "true",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "watcher.settings",
-    "ts.external.directory.path": "C:\\Workspace\\Personal\\npm\\hichchi-nestjs-crud\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last.edited.regexp&quot;: &quot;8sef898sfse.sefsef.sefsefefsf-E_esf&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Workspace/Personal/npm/hichchi-nestjs-crud/node_modules&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build:dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Workspace\\Personal\\npm\\hichchi-nestjs-crud\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\node_modules" />
@@ -95,7 +102,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -158,7 +165,13 @@
       <workItem from="1720416007840" duration="108000" />
       <workItem from="1723448697391" duration="688000" />
       <workItem from="1727259605799" duration="472000" />
-      <workItem from="1727260591494" duration="702000" />
+      <workItem from="1727260591494" duration="898000" />
+      <workItem from="1727262964397" duration="69000" />
+      <workItem from="1727335605102" duration="2845000" />
+      <workItem from="1727356585419" duration="442000" />
+      <workItem from="1727358253388" duration="1832000" />
+      <workItem from="1727864040371" duration="1828000" />
+      <workItem from="1730124352715" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="Add passing constraints enum support">
       <option name="closed" value="true" />
@@ -184,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727261153996</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Various feature updates">
+      <option name="closed" value="true" />
+      <created>1727261437234</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727261437234</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

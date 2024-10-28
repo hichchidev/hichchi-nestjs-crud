@@ -278,7 +278,7 @@ export class CrudService<Entity extends IBaseEntity> {
         try {
             const [data, rowCount] = await this.repository.getMany({ ...(getAll ?? {}), where: { deletedAt: null } });
 
-            return getAll.pagination ? new PaginatedResponse(data, rowCount, getAll.pagination) : data;
+            return getAll?.pagination ? new PaginatedResponse(data, rowCount, getAll.pagination) : data;
         } catch (e: any) {
             if (eh) {
                 const err = eh(e);

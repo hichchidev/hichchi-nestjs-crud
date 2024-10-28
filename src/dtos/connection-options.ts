@@ -9,6 +9,7 @@ export class ConnectionOptions {
     password: string;
     database: string;
     entities: string[];
+    migrations: string[];
     charset: string;
     synchronize: boolean;
     legacySpatialSupport: boolean;

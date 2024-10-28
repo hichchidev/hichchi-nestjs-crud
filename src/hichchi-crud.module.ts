@@ -25,6 +25,7 @@ export class HichchiCrudModule {
                     password: options.password,
                     database: options.database,
                     entities: options.entities,
+                    migrations: options.migrations,
                     charset: options.charset,
                     extra: {
                         charset: options.charset,
