@@ -1,5 +1,11 @@
 # hichchi-nestjs-crud
 
+## 1.1.1
+
+### Patch Changes
+
+- 4cec007: Fix repository transaction function signature
+
 ## 1.1.0
 
 ### Minor Changes
