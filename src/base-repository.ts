@@ -169,11 +169,11 @@ export class BaseRepository<Entity extends IBaseEntity> extends Repository<Entit
         return this.entityRepository.count(options);
     }
 
-    async transaction(operation: (manager: EntityManager) => Promise<Entity>): Promise<Entity> {
+    async transaction<T>(operation: (manager: EntityManager) => Promise<T>): Promise<T> {
         if (BaseRepository._transactionalManager) {
             return operation(BaseRepository._transactionalManager);
         }
-        return this.manager.transaction(async (manager: EntityManager): Promise<Entity> => {
+        return this.manager.transaction(async (manager: EntityManager): Promise<T> => {
             BaseRepository._transactionalManager = manager;
             return operation(manager).finally(() => {
                 BaseRepository._transactionalManager = undefined;

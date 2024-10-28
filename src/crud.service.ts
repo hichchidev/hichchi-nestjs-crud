@@ -466,7 +466,7 @@ export class CrudService<Entity extends IBaseEntity> {
         }
     }
 
-    async transaction(operation: (manager: EntityManager) => Promise<Entity>): Promise<Entity> {
+    async transaction<T>(operation: (manager: EntityManager) => Promise<T>): Promise<T> {
         return this.repository.transaction(operation);
     }
 

@@ -7,15 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Various feature updates">
-      <change afterPath="$PROJECT_DIR$/.changeset/forty-paws-compare.md" afterDir="false" />
+    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Bug fixes and new minor changes">
+      <change beforePath="$PROJECT_DIR$/.idea/hichchi-nestjs-crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hichchi-nestjs-crud.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-repository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/crud.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/crud.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/connection-options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/connection-options.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hichchi-crud.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hichchi-crud.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/responses/crud.responses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/responses/crud.responses.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/entity.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/entity.utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +168,7 @@
       <workItem from="1727358253388" duration="1832000" />
       <workItem from="1727864040371" duration="1828000" />
       <workItem from="1730124352715" duration="241000" />
+      <workItem from="1730135229078" duration="98000" />
     </task>
     <task id="LOCAL-00001" summary="Add passing constraints enum support">
       <option name="closed" value="true" />
