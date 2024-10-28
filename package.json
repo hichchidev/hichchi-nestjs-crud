@@ -1,6 +1,6 @@
 {
   "name": "hichchi-nestjs-crud",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple nestjs CRUD module",
   "main": "index.js",
   "types": "index.d.ts",
