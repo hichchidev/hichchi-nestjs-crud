@@ -9,10 +9,10 @@ import { EntityUtils } from "./utils";
 import { Operation } from "./enums";
 import { EntityErrors } from "./responses";
 import { TypeORMErrorHandler } from "./types";
-import { CrudServiceMissingParamsException } from "./exceptions/crud-service-missing-params.exception";
+import { CrudServiceMissingParamsException } from "./exceptions";
 import { IStatusResponse, IUserEntity, IPagination } from "hichchi-nestjs-common/interfaces";
 import { isUUID } from "class-validator";
-import { PaginatedResponse } from "./classes/paginated-response";
+import { PaginatedResponse } from "./classes";
 
 export class CrudService<Entity extends IBaseEntity> {
     constructor(

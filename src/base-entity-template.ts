@@ -4,6 +4,8 @@ import { Column, DeleteDateColumn, PrimaryGeneratedColumn } from "typeorm";
 import { IBaseEntity } from "./interfaces";
 import { IUserEntity } from "hichchi-nestjs-common/interfaces";
 
+export const BaseEntityTemplateRelations = ["createdBy", "updatedBy", "deletedBy"];
+
 export class BaseEntityTemplate implements IBaseEntity {
     @PrimaryGeneratedColumn("uuid")
     id: string;

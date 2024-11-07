@@ -1,7 +1,6 @@
 import { DatabaseType } from "typeorm";
-import { EntityConstraintValue } from "../types";
 
-export class ConnectionOptions {
+export interface IConnectionOptions {
     type: DatabaseType;
     host: string;
     port: number;
@@ -12,8 +11,7 @@ export class ConnectionOptions {
     migrations: string[];
     charset: string;
     synchronize: boolean;
-    legacySpatialSupport: boolean;
-    keepConnectionAlive: boolean;
-    autoLoadEntities: boolean;
-    constraints?: { [key: string]: EntityConstraintValue };
+    legacySpatialSupport?: boolean;
+    keepConnectionAlive?: boolean;
+    autoLoadEntities?: boolean;
 }

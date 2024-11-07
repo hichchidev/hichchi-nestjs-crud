@@ -1,27 +1,21 @@
-import {
-    BadRequestException,
-    ConflictException,
-    HttpException,
-    Inject,
-    InternalServerErrorException,
-} from "@nestjs/common";
-import { EntityResponses, EntityErrors } from "../responses";
-import { TypeORMErrorType, Operation } from "../enums";
+import { BadRequestException, ConflictException, HttpException, InternalServerErrorException } from "@nestjs/common";
+import { EntityErrors, EntityResponses } from "../responses";
+import { Operation, TypeORMErrorType } from "../enums";
 import { TypeORMError } from "../interfaces";
 import { LoggerService } from "hichchi-nestjs-common/services";
 import { IStatusResponse } from "hichchi-nestjs-common/interfaces";
-import { CONNECTION_OPTIONS } from "../tokens";
-import { ConnectionOptions } from "../dtos";
-import { EntityConstraints } from "../interfaces";
-import { EntityConstraintValue } from "../types";
 import { EntityPropertyNotFoundError } from "typeorm";
 
 export class EntityUtils {
-    public static constraints: EntityConstraints;
-
-    constructor(@Inject(CONNECTION_OPTIONS) readonly connectionOptions: ConnectionOptions) {
-        EntityUtils.constraints = connectionOptions.constraints;
-    }
+    /**
+     * Handle TypeORM errors
+     *
+     * This method handles TypeORM errors and throws appropriate exceptions
+     *
+     * @param {TypeORMError} e TypeORM error
+     * @param {string} entityName Entity name
+     * @param {string} uniqueFieldName Unique field name
+     */
     public static handleError(e: TypeORMError, entityName: string, uniqueFieldName?: string): void {
         if (e instanceof EntityPropertyNotFoundError) {
             throw new BadRequestException(EntityErrors.E_400_QUERY(entityName, e.sqlMessage ?? e.message));
@@ -38,14 +32,14 @@ export class EntityUtils {
                     EntityErrors.E_400_NO_DEFAULT(entityName, field, e.sqlMessage ?? e.message),
                 );
             case TypeORMErrorType.ER_DUP_ENTRY:
-                if (EntityUtils.constraints) {
-                    const unique = e.sqlMessage
-                        .split(/(for key )/)?.[2]
-                        ?.replace(/'/g, "")
-                        ?.split(".")?.[1];
+                const unique = e.sqlMessage
+                    .split(/(for key )/)?.[2]
+                    ?.replace(/'/g, "")
+                    ?.split(".")?.[1];
 
-                    if (unique && Object.values(EntityUtils.constraints).includes(unique as EntityConstraintValue)) {
-                        const [, entityName, relationName] = unique.split("_");
+                if (unique) {
+                    const [, entityName, relationName] = unique.split("_");
+                    if (entityName && relationName) {
                         throw new ConflictException(
                             EntityErrors.E_409_EXIST_U(entityName, relationName, e.sqlMessage ?? e.message),
                         );
@@ -55,10 +49,10 @@ export class EntityUtils {
                     EntityErrors.E_409_EXIST_U(entityName, uniqueFieldName, e.sqlMessage ?? e.message),
                 );
             case TypeORMErrorType.ER_NO_REFERENCED_ROW_2:
-                if (EntityUtils.constraints) {
-                    const fk = e.sqlMessage.split(/(CONSTRAINT `|` FOREIGN KEY)/)?.[2];
-                    if (fk && Object.values(EntityUtils.constraints).includes(fk as EntityConstraintValue)) {
-                        const [, entityName, relationName] = fk.split("_");
+                const fk = e.sqlMessage.split(/(CONSTRAINT `|` FOREIGN KEY)/)?.[2];
+                if (fk) {
+                    const [, entityName, relationName] = fk.split("_");
+                    if (entityName && relationName) {
                         throw new BadRequestException(
                             EntityErrors.E_404_RELATION(entityName, relationName, e.sqlMessage ?? e.message),
                         );
@@ -71,6 +65,15 @@ export class EntityUtils {
         }
     }
 
+    /**
+     * Handle success
+     *
+     * This method returns a success message based on the operation
+     *
+     * @param {Operation} operation Operation
+     * @param {string} entityName Entity name
+     * @returns {IStatusResponse} Success message
+     */
     public static handleSuccess(operation?: Operation, entityName?: string): IStatusResponse {
         switch (operation) {
             case Operation.CREATE:

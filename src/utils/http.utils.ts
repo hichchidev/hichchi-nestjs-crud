@@ -1,8 +1,14 @@
 import { SortOptions } from "../types";
 import { FindOptionsOrderValue } from "typeorm/find-options/FindOptionsOrder";
-import { FilterOptions, FilterValue } from "../types/filter-options.type";
+import { FilterOptions, FilterValue } from "../types";
 
-export const parseSortOptions = <T>(sortString: string): SortOptions<T> | undefined => {
+/**
+ * Parse the sort options from the query string
+ *
+ * @param {string} sortString The sort string
+ * @returns {SortOptions} The sort options
+ */
+export function parseSortOptions<T>(sortString: string): SortOptions<T> | undefined {
     const sortFields: SortOptions<T> = {};
 
     if (!sortString) {
@@ -28,9 +34,15 @@ export const parseSortOptions = <T>(sortString: string): SortOptions<T> | undefi
     });
 
     return Object.values(sortFields).length ? sortFields : undefined;
-};
+}
 
-export const parseFilterObject = <T>(filterObject: { [key: string]: FilterValue }): FilterOptions<T> | undefined => {
+/**
+ * Parse the filter object from the query string
+ *
+ * @param {Record<string, string>} filterObject The filter object
+ * @returns {FilterOptions} The filter options
+ */
+export function parseFilterObject<T>(filterObject: { [key: string]: FilterValue }): FilterOptions<T> | undefined {
     const filterFields: FilterOptions<T> = {};
 
     for (const path in filterObject) {
@@ -53,9 +65,15 @@ export const parseFilterObject = <T>(filterObject: { [key: string]: FilterValue 
     }
 
     return Object.values(filterFields).length ? filterFields : undefined;
-};
+}
 
-export const parseSearchString = <T>(searchString?: string): FilterOptions<T> | undefined => {
+/**
+ * Parse the search string from the query string
+ *
+ * @param {string} searchString The search string
+ * @returns {FilterOptions} The filter options
+ */
+export function parseSearchString<T>(searchString?: string): FilterOptions<T> | undefined {
     const searchFields: FilterOptions<T> = {};
 
     if (!searchString) {
@@ -81,4 +99,4 @@ export const parseSearchString = <T>(searchString?: string): FilterOptions<T> | 
     });
 
     return Object.values(searchFields).length ? searchFields : undefined;
-};
+}

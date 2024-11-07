@@ -2,16 +2,49 @@
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="ANALYZE_INJECTED_CODE" value="false" />
+    <option name="CUSTOM_SCOPE_NAME" value="src" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="Bug fixes and new minor changes">
+    <list default="true" id="4a21e38d-f7fe-40b8-9c53-7e8df0613ba3" name="Changes" comment="* Added new entity decorators @HichchiEntity and @HichchiJoinColumn&#10;* Added validation for constraint names&#10;* constraint enum no longer need to be passed when registering module, instead decorators create constraint names if not provided and validates if provided.">
+      <change afterPath="$PROJECT_DIR$/.changeset/chilly-starfishes-allow.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decorators/entity.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/decorators/join-column.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exceptions/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/entity-option-unique.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/repository-decorator.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/hichchi-nestjs-crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hichchi-nestjs-crud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/base-repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base-entity-template.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/base-entity-template.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/crud.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/crud.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/filter.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/filter.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/page.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/page.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/repository.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/repository.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/search.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/search.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decorators/sort.decorator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/decorators/sort.decorator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/connection-options.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/connection-options.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hichchi-crud.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hichchi-crud.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/entity-constraint.interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/entity-constraint-value.type.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/sort-options.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/sort-options.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/entity.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/entity.utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/http.utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http.utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +70,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="NamedScopeManager">
+    <scope name="src" pattern="file[hichchi-nestjs-crud]:src/*" />
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -76,6 +112,10 @@
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\node_modules" />
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\interfaces" />
       <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\decorators" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\types" />
+      <recent name="C:\Workspace\Personal\npm\hichchi-nestjs-crud\src\interfaces" />
     </key>
   </component>
   <component name="RunManager">
@@ -168,7 +208,28 @@
       <workItem from="1727358253388" duration="1832000" />
       <workItem from="1727864040371" duration="1828000" />
       <workItem from="1730124352715" duration="241000" />
-      <workItem from="1730135229078" duration="98000" />
+      <workItem from="1730135229078" duration="1250000" />
+      <workItem from="1730230918577" duration="297000" />
+      <workItem from="1730263958488" duration="900000" />
+      <workItem from="1730272495754" duration="1522000" />
+      <workItem from="1730275976618" duration="28000" />
+      <workItem from="1730290104224" duration="347000" />
+      <workItem from="1730294584873" duration="2486000" />
+      <workItem from="1730303264288" duration="5220000" />
+      <workItem from="1730351708479" duration="4557000" />
+      <workItem from="1730360304425" duration="8952000" />
+      <workItem from="1730371536080" duration="212000" />
+      <workItem from="1730371784772" duration="27000" />
+      <workItem from="1730371888863" duration="1254000" />
+      <workItem from="1730373220953" duration="1295000" />
+      <workItem from="1730374701335" duration="1719000" />
+      <workItem from="1730377831807" duration="3477000" />
+      <workItem from="1730395624014" duration="1035000" />
+      <workItem from="1730456444634" duration="978000" />
+      <workItem from="1730639785670" duration="153000" />
+      <workItem from="1730796808350" duration="3946000" />
+      <workItem from="1730831225499" duration="2326000" />
+      <workItem from="1730964215573" duration="1828000" />
     </task>
     <task id="LOCAL-00001" summary="Add passing constraints enum support">
       <option name="closed" value="true" />
@@ -202,7 +263,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727261437234</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix repository transaction function signature">
+      <option name="closed" value="true" />
+      <created>1730135415145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730135415145</updated>
+    </task>
+    <task id="LOCAL-00006" summary="* Added new entity decorators @HichchiEntity and @HichchiJoinColumn&#10;* Added validation for constraint names&#10;* constraint enum no longer need to be passed when registering module, instead decorators create constraint names if not provided and validates if provided.">
+      <option name="closed" value="true" />
+      <created>1730965970383</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730965970383</updated>
+    </task>
+    <task id="LOCAL-00007" summary="* Added new entity decorators @HichchiEntity and @HichchiJoinColumn&#10;* Added validation for constraint names&#10;* constraint enum no longer need to be passed when registering module, instead decorators create constraint names if not provided and validates if provided.">
+      <option name="closed" value="true" />
+      <created>1730966047967</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730966047967</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +296,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add passing constraints enum support" />
     <MESSAGE value="Various feature updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Various feature updates" />
+    <MESSAGE value="Fix repository transaction function signature" />
+    <MESSAGE value="* Added new entity decorators @HichchiEntity and @HichchiJoinColumn&#10;* Added validation for constraint names&#10;* constraint enum no longer need to be passed when registering module, instead decorators create constraint names if not provided and validates if provided." />
+    <option name="LAST_COMMIT_MESSAGE" value="* Added new entity decorators @HichchiEntity and @HichchiJoinColumn&#10;* Added validation for constraint names&#10;* constraint enum no longer need to be passed when registering module, instead decorators create constraint names if not provided and validates if provided." />
   </component>
 </project>

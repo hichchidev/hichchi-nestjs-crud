@@ -11,6 +11,7 @@
 /responses
 /types
 /utils
+/classes
 /base-entity.d.ts
 /base-entity.d.ts.map
 /base-entity.js
@@ -39,7 +40,7 @@
 /base-entity-template.d.ts.map
 /base-entity-template.js
 /base-entity-template.js.map
-/classes/paginated-response.d.ts
-/classes/paginated-response.d.ts.map
-/classes/paginated-response.js
-/classes/paginated-response.js.map
+constants.d.ts
+constants.d.ts.map
+constants.js
+constants.js.map
